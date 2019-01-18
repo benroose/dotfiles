@@ -11,7 +11,7 @@ esac
 
 ## LOCAL SHELL CONFIGURATION
 # source .bashrc_local file for any system local variables/scripts if found
-if [ -f ~/.bash_local ]; then
+if [ -f ~/.bashrc_local ]; then
     . ~/.bashrc_local
 fi
 
