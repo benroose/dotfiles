@@ -1,12 +1,21 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+## GLOBAL ROOSE ~/.bashrc: executed by bash(1) for non-login shells.
+## STORED: https://github.com/benroose/dotfiles and configured using Ansible
+## 
+## see /usr/share/doc/bash/examples/startup-files (in the package bash-doc) for examples
 
-# If not running interactively, don't do anything
+## CHECK FOR INTERACTIVE SHELL, ELSE DO NOT DO ANYTHING
 case $- in
     *i*) ;;
       *) return;;
 esac
+
+## LOCAL SHELL CONFIGURATION
+# source .bashrc_local file for any system local variables/scripts if found
+if [ -f ~/.bash_local ]; then
+    . ~/.bashrc_local
+fi
+
+## GLOBAL SHELL CONFIGURATION
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -143,9 +152,8 @@ function tmux-mksc() {
     tmux-rsc $1
 }
 
-# uncomment tmux_at_startup to run tmux script at login
 # attaches to permanent client or create permanent client if not running
-
+# NOTE: place the following variable in .bashrc_local file to run this tmux script at login
 # tmux_at_startup=yes
 
 # USE LINE IF NOT CHECKING EARLIER FOR INTERACTIVE SHELL: if [ "$tmux_at_startup" = yes ] && [[ $- = *i* ]]; then
