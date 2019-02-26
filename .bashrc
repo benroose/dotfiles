@@ -161,7 +161,7 @@ if [ "$tmux_at_startup" = yes ]; then
     TMUXSESSION=dev
     if which tmux >/dev/null 2>&1; then
 	#if not inside a tmux session, and if no session is started, start a new session
-    	test -z "$TMUX" && (nohup tmux-rsc $TMUXSESSION || tmux-mksc $TMUXSESSION )
+    	test -z "$TMUX" && (tmux-rsc $TMUXSESSION || tmux-mksc $TMUXSESSION )
     fi
 fi
 unset tmux_at_startup
