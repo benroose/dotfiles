@@ -1,0 +1,575 @@
+# i3 config file (v5) - BEN'S CONFIGURATION
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+# Font for window titles will also be used by the bar unless a different font
+# is used in the bar {} block below.
+# font pango:DejaVu Sans Mono 8 is default
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn’t scale on retina/hidpi displays.
+
+######################
+### INITIALIZATION ###
+######################
+
+# set config file global variables
+set $mod Mod4
+set $alt Mod1
+
+set $WS0 "0"
+set $WS1 "1:shell1"
+set $WS2 "2:shell2"
+set $WS3 "3:web"
+set $WS4 "4:work"
+set $WS5 "5:pdf"
+set $WS6 "6:office"
+set $WS7 "7"
+set $WS8 "8"
+set $WS9 "9"
+
+set $WS10 "10"
+set $WS11 "11"
+set $WS12 "12:email"
+set $WS13 "13"
+set $WS14 "14"
+set $WS15 "15"
+set $WS16 "16"
+set $WS17 "17"
+set $WS18 "18"
+set $WS19 "19"
+
+set $WS20 "20"
+set $WS21 "21"
+set $WS22 "22:irc"
+set $WS23 "23"
+set $WS24 "24"
+set $WS25 "25"
+set $WS26 "26"
+set $WS27 "27"
+set $WS28 "28"
+set $WS29 "29"
+
+set $WS30 "30"
+
+# workspaces to monitor output
+# workspace $WS2 output HDMI-1
+# workspace $WS8 output HDMI-1
+
+workspace $WS0 output eDP-1
+workspace $WS1 output eDP-1
+workspace $WS2 output eDP-1
+workspace $WS3 output eDP-1
+workspace $WS4 output eDP-1
+workspace $WS5 output eDP-1
+workspace $WS6 output eDP-1
+workspace $WS7 output eDP-1
+workspace $WS8 output eDP-1
+workspace $WS9 output eDP-1
+
+workspace $WS10 output DP-1-1
+workspace $WS11 output DP-1-1
+workspace $WS12 output DP-1-1
+workspace $WS13 output DP-1-1
+workspace $WS14 output DP-1-1
+workspace $WS15 output DP-1-1
+workspace $WS16 output DP-1-1
+workspace $WS17 output DP-1-1
+workspace $WS18 output DP-1-1
+workspace $WS19 output DP-1-1
+
+workspace $WS20 output DP-1-2
+workspace $WS21 output DP-1-2
+workspace $WS22 output DP-1-2
+workspace $WS23 output DP-1-2
+workspace $WS24 output DP-1-2
+workspace $WS25 output DP-1-2
+workspace $WS26 output DP-1-2
+workspace $WS27 output DP-1-2
+workspace $WS28 output DP-1-2
+workspace $WS29 output DP-1-2
+
+# font used for windows
+font pango:DejaVu Sans Mono 8
+
+# window assignments
+# use "xprop WM_CLASS" in shell to get info on a window (Note: 1st value returned by xprop is i3 "instance", 2nd value returned is i3 "class")
+# NOTE: gnome and other display managers no longer allow for custom WM_CLASS. Use "xprop WM_WINDOW_ROLE" with the i3 assignment of window_role. In terminator command use the -r flag to set a custom window role.
+
+# GUI application assignments
+assign [class="^Google-chrome$"] $WS3
+# assign [class="Firefox"] $WS3
+assign [class="Evince"] $WS5
+assign [class="LibreOffice"] $WS6
+assign [class="Linux Show Player"] $WS8
+assign [class="MagicQ"] $WS8
+assign [class="Audacity"] $WS9
+assign [class="Asunder"] $WS9
+
+assign [class="Thunderbird"] $WS12
+
+# CLI application assignments
+assign [window_role="^irc$"] $WS22
+
+# window attributes
+for_window [class="Linux Show Player"] border pixel 1
+for_window [class="MagicQ"] border pixel 1
+
+
+###################
+### KEYBINDINGS ###
+###################
+
+### WINDOWS & WORKSPACES ###
+
+# Use Mouse+alt to drag floating windows to their wanted position (openbox keybinding)
+floating_modifier $alt
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal or vertical orientation
+bindsym $mod+h split h
+bindsym $mod+v split v
+bindsym $mod+underscore split h
+bindsym $mod+bar split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle between stacking/tabbed/split:
+bindsym $mod+q layout toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+x focus parent
+
+# focus the child container
+bindsym $mod+c focus child
+
+# focus on right/left container (openbox window tabbing keybinding)
+bindsym $alt+Tab focus right
+bindsym $alt+Shift+Tab focus left
+
+bindsym $mod+Tab workspace back_and_forth
+
+# switch to workspace - 0-9 only (using modes for 10+)
+bindsym $mod+grave workspace $WS0
+bindsym $mod+1 workspace $WS1
+bindsym $mod+2 workspace $WS2
+bindsym $mod+3 workspace $WS3
+bindsym $mod+4 workspace $WS4
+bindsym $mod+5 workspace $WS5
+bindsym $mod+6 workspace $WS6
+bindsym $mod+7 workspace $WS7
+bindsym $mod+8 workspace $WS8
+bindsym $mod+9 workspace $WS9
+
+# move focused container to workspace - 0-9 only (using modes for 10+)
+bindsym $mod+Shift+grave move container to workspace $WS0
+bindsym $mod+Shift+1 move container to workspace $WS1
+bindsym $mod+Shift+2 move container to workspace $WS2
+bindsym $mod+Shift+3 move container to workspace $WS3
+bindsym $mod+Shift+4 move container to workspace $WS4
+bindsym $mod+Shift+5 move container to workspace $WS5
+bindsym $mod+Shift+6 move container to workspace $WS6
+bindsym $mod+Shift+7 move container to workspace $WS7
+bindsym $mod+Shift+8 move container to workspace $WS8
+bindsym $mod+Shift+9 move container to workspace $WS9
+
+
+# ALT MODIFIER NOT USED SINCE THESE INTERFERE WITH EMACS KEYBINDS
+#bindsym $alt+1 workspace $WS1
+#bindsym $alt+2 workspace $WS2
+#bindsym $alt+3 workspace $WS3
+#bindsym $alt+4 workspace $WS4
+#bindsym $alt+5 workspace $WS5
+#bindsym $alt+6 workspace $WS6
+#bindsym $alt+7 workspace $WS7
+#bindsym $alt+8 workspace $WS8
+#bindsym $alt+9 workspace $WS9
+#bindsym $alt+0 workspace $WS10
+
+#bindsym $alt+Shift+1 move container to workspace $WS1
+#bindsym $alt+Shift+2 move container to workspace $WS2
+#bindsym $alt+Shift+3 move container to workspace $WS3
+#bindsym $alt+Shift+4 move container to workspace $WS4
+#bindsym $alt+Shift+5 move container to workspace $WS5
+#bindsym $alt+Shift+6 move container to workspace $WS6
+#bindsym $alt+Shift+7 move container to workspace $WS7
+#bindsym $alt+Shift+8 move container to workspace $WS8
+#bindsym $alt+Shift+9 move container to workspace $WS9
+#bindsym $alt+Shift+0 move container to workspace $WS10
+
+# OpenBox equivalent workspace keybindings
+bindsym Control+$alt+Left workspace prev
+bindsym Control+$alt+Right workspace next
+# bindsym Shift+Control+$alt+Left move container to workspace prev
+# bindsym Shift+Control+$alt+Right move container to workspace next
+
+# Move the current workspace to the next/previous outputs
+# (effectively toggles when you only have two outputs)
+bindsym Shift+Control+$alt+Left move workspace to output left
+bindsym Shift+Control+$alt+Right move workspace to output right
+bindsym Shift+Control+$alt+Up move workspace to output up
+bindsym Shift+Control+$alt+Down move workspace to output down
+
+# UNUSED - specific workspace keybindings: shell, editor, web
+# bindsym Control+$mod+t workspace $WS1
+# bindsym Control+$mod+e workspace $WS2
+# bindsym Control+$mod+w workspace $WS3
+
+### MODES ###
+
+# MODE - additional workspace selection and movement
+mode "workspace_primary_switch" {
+    bindsym grave workspace $WS0; mode "default"
+    bindsym 1 workspace $WS1; mode "default"
+    bindsym 2 workspace $WS2; mode "default"
+    bindsym 3 workspace $WS3; mode "default"
+    bindsym 4 workspace $WS4; mode "default"
+    bindsym 5 workspace $WS5; mode "default"
+    bindsym 6 workspace $WS6; mode "default"
+    bindsym 7 workspace $WS7; mode "default"
+    bindsym 8 workspace $WS8; mode "default"
+    bindsym 9 workspace $WS9; mode "default"
+    
+    bindsym Shift+grave move container to workspace $WS0
+    bindsym Shift+1 move container to workspace $WS1
+    bindsym Shift+2 move container to workspace $WS2
+    bindsym Shift+3 move container to workspace $WS3
+    bindsym Shift+4 move container to workspace $WS4
+    bindsym Shift+5 move container to workspace $WS5
+    bindsym Shift+6 move container to workspace $WS6
+    bindsym Shift+7 move container to workspace $WS7
+    bindsym Shift+8 move container to workspace $WS8
+    bindsym Shift+9 move container to workspace $WS9
+    
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    }
+
+bindsym $mod+apostrophe mode "workspace_primary_switch"
+
+mode "workspace_left_switch" {
+    bindsym grave workspace $WS10; mode "default"
+    bindsym 1 workspace $WS11; mode "default"
+    bindsym 2 workspace $WS12; mode "default"
+    bindsym 3 workspace $WS13; mode "default"
+    bindsym 4 workspace $WS14; mode "default"
+    bindsym 5 workspace $WS15; mode "default"
+    bindsym 6 workspace $WS16; mode "default"
+    bindsym 7 workspace $WS17; mode "default"
+    bindsym 8 workspace $WS18; mode "default"
+    bindsym 9 workspace $WS19; mode "default"
+    
+    bindsym Shift+grave move container to workspace $WS10
+    bindsym Shift+1 move container to workspace $WS11
+    bindsym Shift+2 move container to workspace $WS12
+    bindsym Shift+3 move container to workspace $WS13
+    bindsym Shift+4 move container to workspace $WS14
+    bindsym Shift+5 move container to workspace $WS15
+    bindsym Shift+6 move container to workspace $WS16
+    bindsym Shift+7 move container to workspace $WS17
+    bindsym Shift+8 move container to workspace $WS18
+    bindsym Shift+9 move container to workspace $WS19
+    
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    }
+
+bindsym $mod+bracketleft mode "workspace_left_switch"
+
+mode "workspace_left_move_container" {    
+    bindsym grave move container to workspace $WS10; mode "default"
+    bindsym 1 move container to workspace $WS11; mode "default"
+    bindsym 2 move container to workspace $WS12; mode "default"
+    bindsym 3 move container to workspace $WS13; mode "default"
+    bindsym 4 move container to workspace $WS14; mode "default"
+    bindsym 5 move container to workspace $WS15; mode "default"
+    bindsym 6 move container to workspace $WS16; mode "default"
+    bindsym 7 move container to workspace $WS17; mode "default"
+    bindsym 8 move container to workspace $WS18; mode "default"
+    bindsym 9 move container to workspace $WS19; mode "default"
+    
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    }
+
+bindsym $mod+Shift+bracketleft mode "workspace_left_move_container"
+
+
+mode "workspace_right_switch" {
+    bindsym grave workspace $WS20; mode "default"
+    bindsym 1 workspace $WS21; mode "default"
+    bindsym 2 workspace $WS22; mode "default"
+    bindsym 3 workspace $WS23; mode "default"
+    bindsym 4 workspace $WS24; mode "default"
+    bindsym 5 workspace $WS25; mode "default"
+    bindsym 6 workspace $WS26; mode "default"
+    bindsym 7 workspace $WS27; mode "default"
+    bindsym 8 workspace $WS28; mode "default"
+    bindsym 9 workspace $WS29; mode "default"
+    
+    bindsym Shift+grave move container to workspace $WS20
+    bindsym Shift+1 move container to workspace $WS21
+    bindsym Shift+2 move container to workspace $WS22
+    bindsym Shift+3 move container to workspace $WS23
+    bindsym Shift+4 move container to workspace $WS24
+    bindsym Shift+5 move container to workspace $WS25
+    bindsym Shift+6 move container to workspace $WS26
+    bindsym Shift+7 move container to workspace $WS27
+    bindsym Shift+8 move container to workspace $WS28
+    bindsym Shift+9 move container to workspace $WS29
+    
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    }
+
+bindsym $mod+bracketright mode "workspace_right_switch"
+
+mode "workspace_right_move_container" {    
+    bindsym grave move container to workspace $WS20; mode "default"
+    bindsym 1 move container to workspace $WS21; mode "default"
+    bindsym 2 move container to workspace $WS22; mode "default"
+    bindsym 3 move container to workspace $WS23; mode "default"
+    bindsym 4 move container to workspace $WS24; mode "default"
+    bindsym 5 move container to workspace $WS25; mode "default"
+    bindsym 6 move container to workspace $WS26; mode "default"
+    bindsym 7 move container to workspace $WS27; mode "default"
+    bindsym 8 move container to workspace $WS28; mode "default"
+    bindsym 9 move container to workspace $WS29; mode "default"
+    
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    }
+
+bindsym $mod+Shift+bracketright mode "workspace_right_move_container"
+
+# MODE - resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# MODE - Application Quick Launch (ubuntu keybinding)
+set $mode_launch "Launch:  [W]eb [E]ditor [O]ffice [T]erminal [U]nison [F]ile [S]how [H]top [Winkey+Esc]System menu"
+mode $mode_launch {
+
+        # These bindings trigger application launch
+        bindsym w workspace $WS3, exec x-www-browser; mode "default"
+		bindsym e exec emacs; mode "default"
+		bindsym o workspace $WS4, exec libreoffice; mode "default"
+		bindsym t exec i3-sensible-terminal; mode "default"
+		bindsym u exec unison-gtk; mode "default"
+		bindsym f exec thunar; mode "default"
+		bindsym h exec i3-sensible-terminal -T 'htop task manager' -e htop; mode "default"
+		bindsym s workspace $WS10, exec asunder; exec linux-show-player; mode "default"
+		bindsym $mod+Escape mode "$mode_system"
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+a mode $mode_launch
+
+# MODE - System Shutdown menu 
+#set $mode_system System Menu: [L]ock [R]eboot, [S]hutdown, [Winkey+Esc]Shutdown
+set $mode_system System Menu: [L]ock [Winkey+L]ogout [S]uspend [H]ibernate [R]eboot, [Winkey+Esc / S]hutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym $mod+l exec --no-startup-id i3exit logout, mode "default"
+    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym $mod+s exec --no-startup-id i3exit shutdown, mode "default"
+    bindsym $mod+Escape exec --no-startup-id i3exit shutdown, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Pause mode "$mode_system"
+bindsym $mod+Escape mode "$mode_system"
+
+
+### APPLICATIONS ###
+
+# print screenshot
+bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/Pictures/screenshots/' && notify-send 'Scrot Saved!'
+
+# start run command (openbox keybinding) or dmenu
+#bindsym $alt+F2 exec gmrun
+bindsym $alt+F2 exec dmenu_run
+
+# start dmenu (a program launcher)
+bindsym $mod+d exec dmenu_run
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# start htop process monitor (openbox keybinding)
+bindsym Control+$alt+h exec x-terminal-emulator -T 'htop task manager' -e htop
+
+# start a terminal (Ubuntu keybinding alternative)
+#bindsym $mod+Return exec i3-sensible-terminal #i3 default
+#bindsym Control+$alt+t workspace $WS1; exec x-terminal-emulator --new-tab
+bindsym Control+$alt+t exec x-terminal-emulator
+
+# scratchpad popup window keybindings and assignment
+# (see autostart section below for scratchpad application options)
+bindsym $mod+p scratchpad show
+bindsym $mod+Shift+p move scratchpad
+for_window [window_role="^scratchpad$"] move scratchpad, border 1pixel
+
+### KILLINGS, EXITS, RELOADS ###
+
+# kill focused window (i3 and openbox default keybindings)
+bindsym $mod+Shift+q kill
+bindsym $alt+F4 kill
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# lock screen
+bindsym $mod+Shift+Delete exec --no-startup-id  i3lock 
+# bunsenlabs logout/sleep/power menu
+bindsym $mod+Shift+End exec bl-exit
+
+
+##################
+### STATUS BAR ###
+##################
+bar {
+   		 colors {
+        background #000000
+        statusline #00A5FF #that neon blue
+        separator #666666
+
+        focused_workspace  #4c7899 #285577 #ffffff
+        active_workspace   #333333 #5f676a #ffffff
+        inactive_workspace #333333 #222222 #888888
+        urgent_workspace   #2f343a #900000 #ffffff
+    }
+    
+        status_command i3status
+		#status_command i3status --config ~/.config/i3status/config_minimal
+				
+		### Status Bar Hiding Mode ###
+		#mode hide
+    	#hidden_state hide
+    	#modifier $mod	
+}
+
+
+###########################
+#### WORKSPACE LAYOUTS ####
+###########################
+
+# load json i3-tree layouts for each initial workspace
+#exec --no-startup-id i3-msg workspace $WS2, append_layout ~/.config/i3/workspace2.json;
+exec --no-startup-id i3-msg workspace $WS1, append_layout ~/.config/i3/workspace1.json;
+
+#exec --no-startup-id i3-msg append_layout ~/.config/i3/lvds1.json;
+
+
+###########################
+### AUTOSTART PROCESSES ###
+###########################
+
+# set desktop background - NOTE: FEH needs to be installed for this to work!
+exec --no-startup-id feh --bg-fill ~/.config/fraktal_naya_1280x800.jpg
+
+# autostart applets: network manager, sound, gtk support
+exec --no-startup-id volti
+exec --no-startup-id nm-applet
+#exec --no-startup-id gnome-sound-applet NOT INSTALLED
+#exec --no-startup-id gnome-settings-daemon NOT INSTALLED
+
+# fix compositor glitch for Zoom annotation/whiteboard to work correctly
+exec --no-startup-id xcompmgr -c -l0 -t0 -r0 -o.00
+
+# SET XRANDR for multi-monitors
+exec --no-startup-id ~/.screenlayout/Dual_DP_extended_and_rotated.sh
+
+# autostart terminal, geany editor, or emacs editor on scratchpad popup window (emacs is a CPU hog)
+exec --no-startup-id i3-msg 'exec /usr/bin/terminator -r scratchpad;'
+#exec --no-startup-id i3-msg 'exec /usr/bin/geany -i --name scratchpad;'
+#exec --no-startup-id i3-msg 'exec /usr/bin/emacs -Q --name scratchpad;'
+
+# UNUSED (using keychain instead): add into gnome-keyring all user rsa ssh keys found in .ssh
+#exec "eval '$(ssh-agent)'; ssh-add $HOME/.ssh/id_rsa $HOME/.ssh/git_rsa"
+
+# autostart apps on workspaces (in reverse order): text editor (geany or emacs), tabbed terminal/file manager
+#exec bl-text-editor;
+#exec --no-startup-id i3-msg 'workspace $WS2, exec emacs;'
+#exec bl-file-manager;
+#exec /usr/bin/geany;
+exec --no-startup-id /usr/bin/thunar;
+exec --no-startup-id /usr/bin/thunderbird;
+exec --no-startup-id i3-msg 'exec /usr/bin/terminator -r irc -e weechat;'
+exec i3-sensible-terminal -x /bin/bash -c 'eval $(keychain --clear --eval --agents ssh id_rsa git_rsa cslab_rsa);'
+exec i3-sensible-terminal;
+#exec linux-show-player
+#exec asunder;
+exec --no-startup-id i3-msg 'workspace $WS3, exec x-www-browser;'
+# exec --no-startup-id i3-msg 'workspace $WS12, exec thunderbird;'
