@@ -1,4 +1,5 @@
 # i3 config file (v5) - BEN'S CONFIGURATION
+# Ansible managed
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 # Font for window titles will also be used by the bar unless a different font
@@ -57,41 +58,50 @@ set $WS29 "29"
 set $WS30 "30"
 
 # workspaces to monitor output
+# use xrandr to find monitor names on system
+# set $DISPLAY_PRIMARY "eDP-1"
+set $DISPLAY-PRIMARY "DP-1-2"
+set $DISPLAY-LEFT "DP-1-1"
+set $DISPLAY-RIGHT "DP-1-3"
+
+# wacom tablet model to use
+set $TABLET "Wacom Intuos3 4x6 stylus"
+
 # workspace $WS2 output HDMI-1
 # workspace $WS8 output HDMI-1
 
-workspace $WS0 output eDP-1
-workspace $WS1 output eDP-1
-workspace $WS2 output eDP-1
-workspace $WS3 output eDP-1
-workspace $WS4 output eDP-1
-workspace $WS5 output eDP-1
-workspace $WS6 output eDP-1
-workspace $WS7 output eDP-1
-workspace $WS8 output eDP-1
-workspace $WS9 output eDP-1
+workspace $WS0 output $DISPLAY-PRIMARY
+workspace $WS1 output $DISPLAY-PRIMARY
+workspace $WS2 output $DISPLAY-PRIMARY
+workspace $WS3 output $DISPLAY-PRIMARY
+workspace $WS4 output $DISPLAY-PRIMARY
+workspace $WS5 output $DISPLAY-PRIMARY
+workspace $WS6 output $DISPLAY-PRIMARY
+workspace $WS7 output $DISPLAY-PRIMARY
+workspace $WS8 output $DISPLAY-PRIMARY
+workspace $WS9 output $DISPLAY-PRIMARY
 
-workspace $WS10 output DP-1-1
-workspace $WS11 output DP-1-1
-workspace $WS12 output DP-1-1
-workspace $WS13 output DP-1-1
-workspace $WS14 output DP-1-1
-workspace $WS15 output DP-1-1
-workspace $WS16 output DP-1-1
-workspace $WS17 output DP-1-1
-workspace $WS18 output DP-1-1
-workspace $WS19 output DP-1-1
+workspace $WS10 output $DISPLAY-LEFT
+workspace $WS11 output $DISPLAY-LEFT
+workspace $WS12 output $DISPLAY-LEFT
+workspace $WS13 output $DISPLAY-LEFT
+workspace $WS14 output $DISPLAY-LEFT
+workspace $WS15 output $DISPLAY-LEFT
+workspace $WS16 output $DISPLAY-LEFT
+workspace $WS17 output $DISPLAY-LEFT
+workspace $WS18 output $DISPLAY-LEFT
+workspace $WS19 output $DISPLAY-LEFT
 
-workspace $WS20 output DP-1-2
-workspace $WS21 output DP-1-2
-workspace $WS22 output DP-1-2
-workspace $WS23 output DP-1-2
-workspace $WS24 output DP-1-2
-workspace $WS25 output DP-1-2
-workspace $WS26 output DP-1-2
-workspace $WS27 output DP-1-2
-workspace $WS28 output DP-1-2
-workspace $WS29 output DP-1-2
+workspace $WS20 output $DISPLAY-RIGHT
+workspace $WS21 output $DISPLAY-RIGHT
+workspace $WS22 output $DISPLAY-RIGHT
+workspace $WS23 output $DISPLAY-RIGHT
+workspace $WS24 output $DISPLAY-RIGHT
+workspace $WS25 output $DISPLAY-RIGHT
+workspace $WS26 output $DISPLAY-RIGHT
+workspace $WS27 output $DISPLAY-RIGHT
+workspace $WS28 output $DISPLAY-RIGHT
+workspace $WS29 output $DISPLAY-RIGHT
 
 # font used for windows
 font pango:DejaVu Sans Mono 8
@@ -408,7 +418,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # MODE - Application Quick Launch (ubuntu keybinding)
-set $mode_launch "Launch:  [W]eb [E]ditor [O]ffice [T]erminal [U]nison [F]ile [S]how [H]top [Winkey+Esc]System menu"
+set $mode_launch "Launch:  [W]eb [E]ditor [O]ffice [T]erminal [C]onference [U]nison [F]ile [S]ound [H]top [Winkey+Esc]System menu"
 mode $mode_launch {
 
         # These bindings trigger application launch
@@ -417,9 +427,10 @@ mode $mode_launch {
 		bindsym o workspace $WS4, exec libreoffice; mode "default"
 		bindsym t exec i3-sensible-terminal; mode "default"
 		bindsym u exec unison-gtk; mode "default"
-		bindsym f exec thunar; mode "default"
+		bindsym f exec nautilus; mode "default"
 		bindsym h exec i3-sensible-terminal -T 'htop task manager' -e htop; mode "default"
-		bindsym s workspace $WS10, exec asunder; exec linux-show-player; mode "default"
+		bindsym s exec pavucontrol; mode "default"
+		bindsym c exec bluejeans; mode "default"
 		bindsym $mod+Escape mode "$mode_system"
 
         # back to normal: Enter or Escape
@@ -451,7 +462,10 @@ bindsym $mod+Escape mode "$mode_system"
 ### APPLICATIONS ###
 
 # print screenshot
-bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/Pictures/screenshots/' && notify-send 'Scrot Saved!'
+# bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/Pictures/screenshots/' && notify-send 'Scrot Saved!'
+bindsym Print exec gnome-screenshot && notify-send 'Desktop Screenshot Saved!'
+bindsym Control+Print exec gnome-screenshot -w && notify-send 'Window Only Screenshot Saved!'
+bindsym $alt+Print exec gnome-screenshot -a && notify-send 'Area Only Screenshot Saved!'
 
 # start run command (openbox keybinding) or dmenu
 #bindsym $alt+F2 exec gmrun
@@ -470,7 +484,7 @@ bindsym Control+$alt+h exec x-terminal-emulator -T 'htop task manager' -e htop
 # start a terminal (Ubuntu keybinding alternative)
 #bindsym $mod+Return exec i3-sensible-terminal #i3 default
 #bindsym Control+$alt+t workspace $WS1; exec x-terminal-emulator --new-tab
-bindsym Control+$alt+t exec x-terminal-emulator
+bindsym Control+$alt+t exec i3-sensible-terminal
 
 # scratchpad popup window keybindings and assignment
 # (see autostart section below for scratchpad application options)
@@ -483,6 +497,10 @@ for_window [window_role="^scratchpad$"] move scratchpad, border 1pixel
 # kill focused window (i3 and openbox default keybindings)
 bindsym $mod+Shift+q kill
 bindsym $alt+F4 kill
+
+# set wacom graphics tablet scaled to single monitor
+# further info on xsetwacom: https://github.com/linuxwacom/xf86-input-wacom/wiki/Dual-and-Multi-Monitor-Set-Up
+bindsym $mod+Shift+w exec xsetwacom set $TABLET MapToOutput $DISPLAY-PRIMARY
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -526,8 +544,9 @@ bar {
 ###########################
 
 # load json i3-tree layouts for each initial workspace
-#exec --no-startup-id i3-msg workspace $WS2, append_layout ~/.config/i3/workspace2.json;
-exec --no-startup-id i3-msg workspace $WS1, append_layout ~/.config/i3/workspace1.json;
+#exec --no-startup-id i3-msg workspace $WS2, append_layout ~/.config/i3//workspaces/workspace2.json;
+exec --no-startup-id i3-msg workspace $WS1, append_layout ~/.config/i3/workspaces/workspace1.json;
+exec --no-startup-id i3-msg workspace $WS22, append_layout ~/.config/i3/workspaces/workspace22.json;
 
 #exec --no-startup-id i3-msg append_layout ~/.config/i3/lvds1.json;
 
@@ -536,20 +555,27 @@ exec --no-startup-id i3-msg workspace $WS1, append_layout ~/.config/i3/workspace
 ### AUTOSTART PROCESSES ###
 ###########################
 
-# set desktop background - NOTE: FEH needs to be installed for this to work!
-exec --no-startup-id feh --bg-fill ~/.config/fraktal_naya_1280x800.jpg
+# set desktop background - NOTE: FEH needs to be installed for this to work, but RHEL does not have feh package!
+# exec --no-startup-id feh --bg-fill ~/.config/fraktal_naya_1280x800.jpg #can also use --bg-scale
+
+# set desktop background as static colour
+# set $BG_COLOR "#333333" # set as dark grey
+# set $BG_COLOR "#CC0000" # set as Red Hat bright red
+set $BG_COLOR "#820000" # set as Red Hat dark red
+
+exec --no-startup-id xsetroot -solid $BG_COLOR
 
 # autostart applets: network manager, sound, gtk support
-exec --no-startup-id volti
+# exec --no-startup-id volti
 exec --no-startup-id nm-applet
 #exec --no-startup-id gnome-sound-applet NOT INSTALLED
 #exec --no-startup-id gnome-settings-daemon NOT INSTALLED
 
 # fix compositor glitch for Zoom annotation/whiteboard to work correctly
-exec --no-startup-id xcompmgr -c -l0 -t0 -r0 -o.00
+# exec --no-startup-id xcompmgr -c -l0 -t0 -r0 -o.00
 
-# SET XRANDR for multi-monitors
-exec --no-startup-id ~/.screenlayout/Dual_DP_extended_and_rotated.sh
+# run script to check if docking station is connected and set xrandr for  multi-monitors
+exec --no-startup-id ~/.screenlayout/display_test.sh
 
 # autostart terminal, geany editor, or emacs editor on scratchpad popup window (emacs is a CPU hog)
 exec --no-startup-id i3-msg 'exec /usr/bin/terminator -r scratchpad;'
@@ -564,12 +590,15 @@ exec --no-startup-id i3-msg 'exec /usr/bin/terminator -r scratchpad;'
 #exec --no-startup-id i3-msg 'workspace $WS2, exec emacs;'
 #exec bl-file-manager;
 #exec /usr/bin/geany;
-exec --no-startup-id /usr/bin/thunar;
-exec --no-startup-id /usr/bin/thunderbird;
+
+exec --no-startup-id /usr/bin/nautilus;
+# exec --no-startup-id /usr/bin/thunderbird;
 exec --no-startup-id i3-msg 'exec /usr/bin/terminator -r irc -e weechat;'
 exec i3-sensible-terminal -x /bin/bash -c 'eval $(keychain --clear --eval --agents ssh id_rsa git_rsa cslab_rsa);'
 exec i3-sensible-terminal;
+# exec --no-startup-id i3-msg 'workspace $WS1, exec i3-sensible-terminal -r Terminal;'
 #exec linux-show-player
 #exec asunder;
-exec --no-startup-id i3-msg 'workspace $WS3, exec x-www-browser;'
+exec --no-startup-id i3-msg 'workspace $WS3, exec firefox;'
+exec --no-startup-id i3-msg 'workspace $WS22, exec chromium-browser;'
 # exec --no-startup-id i3-msg 'workspace $WS12, exec thunderbird;'
