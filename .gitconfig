@@ -1,6 +1,6 @@
 [user]
   name = Ben Roose
-  email = ben.roose@wichita.edu
+  email = benroose@redhat.com
 [core]
   editor = emacs
   excludesfile = ~/.gitignore
