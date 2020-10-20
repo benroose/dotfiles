@@ -1,6 +1,7 @@
 ; thunar GtkAccelMap rc-file         -*- scheme -*-
 ; this file is an automated accelerator map dump
 ;
+; (gtk_accel_path "<Actions>/ThunarBookmarks/c8cee2aab4341158f8826cf42de375c2" "")
 ; (gtk_accel_path "<Actions>/ThunarStandardView/invert-selection" "")
 ; (gtk_accel_path "<Actions>/ThunarLauncher/open-in-new-tab" "<Primary><Shift>p")
 ; (gtk_accel_path "<Actions>/ThunarWindow/zoom-in" "<Primary>plus")
@@ -25,6 +26,7 @@
 ; (gtk_accel_path "<Actions>/ThunarStandardView/back" "<Alt>Left")
 ; (gtk_accel_path "<Actions>/ThunarWindow/sendto-menu" "")
 ; (gtk_accel_path "<Actions>/ThunarStandardView/delete" "")
+; (gtk_accel_path "<Actions>/ThunarBookmarks/d42344aa9c9370a6b378a13de2c7df35" "")
 ; (gtk_accel_path "<Actions>/ThunarStandardView/select-by-pattern" "<Primary>s")
 ; (gtk_accel_path "<Actions>/ThunarWindow/close-tab" "<Primary>w")
 ; (gtk_accel_path "<Actions>/ThunarWindow/view-side-pane-tree" "<Primary>e")
@@ -33,10 +35,12 @@
 ; (gtk_accel_path "<Actions>/ThunarWindow/open-location-alt" "<Alt>d")
 ; (gtk_accel_path "<Actions>/ThunarWindow/open-home" "<Alt>Home")
 ; (gtk_accel_path "<Actions>/ThunarLauncher/open-with-other-in-menu" "")
+; (gtk_accel_path "<Actions>/ThunarBookmarks/faf984832b374b2f03793cb0ecf5b5a1" "")
 ; (gtk_accel_path "<Actions>/ThunarWindow/open-templates" "")
 ; (gtk_accel_path "<Actions>/ThunarStandardView/rename" "F2")
 ; (gtk_accel_path "<Actions>/ThunarStandardView/paste" "<Primary>v")
 ; (gtk_accel_path "<Actions>/ThunarStandardView/duplicate" "")
+; (gtk_accel_path "<Actions>/ThunarBookmarks/3a0d0ad2ae087957642bf8e13f1f1581" "")
 ; (gtk_accel_path "<Actions>/ThunarWindow/zoom-out" "<Primary>minus")
 ; (gtk_accel_path "<Actions>/ThunarLauncher/sendto-desktop" "")
 ; (gtk_accel_path "<Actions>/ThunarWindow/view-location-selector-toolbar" "")
@@ -55,6 +59,7 @@
 ; (gtk_accel_path "<Actions>/ThunarWindow/view-statusbar" "")
 ; (gtk_accel_path "<Actions>/ThunarStandardView/copy" "<Primary>c")
 ; (gtk_accel_path "<Actions>/ThunarWindow/open-trash" "")
+; (gtk_accel_path "<Actions>/ThunarBookmarks/47217f21dde7074e005f8ac57a8b5e24" "")
 ; (gtk_accel_path "<Actions>/ThunarActions/uca-action-1450729426324118-4" "")
 ; (gtk_accel_path "<Actions>/ThunarWindow/open-desktop" "")
 ; (gtk_accel_path "<Actions>/ThunarStandardView/paste-into-folder" "")
