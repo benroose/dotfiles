@@ -123,6 +123,7 @@ fi
 
 # set emacs as default editor
 EDITOR="emacs"
+ZEROTIER_NET="9f77fc393e67f945"
 
 ##############
 # TMUX SCRIPTS
@@ -166,5 +167,6 @@ if [ "$tmux_at_startup" = yes ]; then
 fi
 unset tmux_at_startup
 
-# disable middle button click on Lenovo Thinkpad trackpad
-xinput set-button-map 9 1 1 3 4 5 6 7
+# set middle button click as right button click on Lenovo Thinkpad trackpad
+trackpad_id=$(xinput | grep -m 1 "Synaptics TM3276-031" | sed 's/^.*id=\([0-9]*\)[ \t].*$/\1/')
+xinput set-button-map $trackpad_id 1 1 3 4 5 6 7

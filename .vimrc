@@ -1,2 +1,16 @@
-autocmd FileType yaml setlocal ai ts=2 sw=2 et
-cuc number cursorline
+" activates filetype detection
+filetype plugin indent on
+
+" activates syntax highlighting among other things
+syntax on
+
+" allows you to deal with multiple unsaved
+" buffers simultaneously without resorting
+" to misusing tabs
+set hidden
+
+" just hit backspace without this one and
+" see for yourself
+set backspace=indent,eol,start
+
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 nu expandtab cursorline
