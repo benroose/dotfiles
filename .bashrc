@@ -125,8 +125,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# set emacs as default editor
-EDITOR="emacs"
+# set gedit as default editor
+EDITOR="gedit"
 ZEROTIER_NET="9f77fc393e67f945"
 
 ##############

@@ -3,6 +3,8 @@
 # Description: bash script to test connected monitors on Lenovo laptop and set xrandr display parameters according
 
 # xrandr display parameters
+#dock_2_displays_xrandr_output_1="xrandr --output eDP-1 --off --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --off --output DP-1-2 --mode 3440x1440 --pos 0x0 --rotate normal --output DP-1-3 --mode 1440x900 --pos 3440x0 --rotate right --output DP-1-1 --off"
+#dock_2_displays_xrandr_output_2="xrandr --output eDP-1 --off --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --off --output DP-1-1 --mode 3440x1440 --pos 0x0 --rotate normal --output DP-1-3 --mode 1440x900 --pos 3440x0 --rotate right --output DP-1-2 --off"
 dock_2_displays_xrandr_output_1="xrandr --output eDP-1 --off --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --off --output DP-1-1 --mode 3440x1440 --pos 0x0 --rotate normal --output DP-1-2 --off --output DP-1-3 --mode 1440x900 --pos 3440x0 --rotate right"
 dock_2_displays_xrandr_output_2="xrandr --output eDP-1 --off --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --off --output DP-1-1 --off --output DP-1-2 --primary --mode 3440x1440 --pos 0x0 --rotate normal --output DP-1-3 --mode 1440x900 --pos 3440x0 --rotate right"
 #HORIZONTAL dock_3_displays_xrandr_output="xrandr --output eDP-1 --off --output DP-1 --off --output HDMI-1 --off --output DP-2 --off --output HDMI-2 --off --output DP-1-1 --mode 1920x1080 --pos 0x360 --rotate normal --output DP-1-2 --mode 1920x1080 --pos 1920x360 --rotate normal --output DP-1-3 --mode 1440x900 --pos 3840x0 --rotate right"
