@@ -125,9 +125,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# set emacs as default editor
-EDITOR="emacs"
+# set nano as default editor
+EDITOR="nano"
 ZEROTIER_NET="9f77fc393e67f945"
+
+# unlock ssh and gpg keys
+eval $(keychain --quick --eval --agents gpg,ssh ~/.ssh/*_rsa ~/.ssh/*_ecdsa ~/.ssh/*_ed25519)
+
 
 ##############
 # TMUX SCRIPTS
@@ -172,5 +176,5 @@ fi
 unset tmux_at_startup
 
 # set middle button click as right button click on Lenovo Thinkpad trackpad
-trackpad_id=$(xinput | grep -m 1 "Synaptics TM3276-031" | sed 's/^.*id=\([0-9]*\)[ \t].*$/\1/')
-xinput set-button-map $trackpad_id 1 1 3 4 5 6 7
+#trackpad_id=$(xinput | grep -m 1 "Synaptics TM3276-031" | sed 's/^.*id=\([0-9]*\)[ \t].*$/\1/')
+#xinput set-button-map $trackpad_id 1 1 3 4 5 6 7
