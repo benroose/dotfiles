@@ -125,8 +125,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# set nano as default editor
-EDITOR="nano"
+# set gedit as default editor
+EDITOR="gedit"
 ZEROTIER_NET="9f77fc393e67f945"
 
 # unlock ssh and gpg keys
@@ -156,7 +156,7 @@ function tmux-mksc() {
     tmux new-window -d -t $1
     # tmux new-window -d -t $1:9 -n "test_box" "ssh 156.26.10.119"
     # tmux new-window -d -t $1 "su -" \; set-window-option -t $1:1 remain-on-exit
-    
+
     # call rsc to create a temporary session
     tmux-rsc $1
 }
